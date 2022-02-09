@@ -20,6 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+        	'topic_publisher = ros2_pi_controller.minimal_publisher:main',
+        	'topic_subscriber = ros2_pi_controller.minimal_subscriber:main',
         ],
     },
 )
