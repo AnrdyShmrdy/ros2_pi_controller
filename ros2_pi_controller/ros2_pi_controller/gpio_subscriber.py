@@ -13,7 +13,6 @@
 # limitations under the License.
 
 import rclpy
-import RPi.GPIO as GPIO
 from rclpy.node import Node
 
 from std_msgs.msg import String
@@ -32,22 +31,6 @@ class MinimalSubscriber(Node):
 
     def listener_callback(self, msg):
         self.get_logger().info('I heard: "%s"' % msg.data)
-        if 'ON' in msg.data:
-            if '24' in msg.data:
-                GPIO.output(24, GPIO.HIGH)  #turn on the LED
-            elif '23' in msg.data:
-                GPIO.output(23, GPIO.HIGH)  #turn on the LED
-            elif '22' in msg.data:
-                GPIO.output(22, GPIO.HIGH)  #turn on the LED
-        elif 'OFF' in msg.data:
-            if '24' in msg.data:
-                GPIO.output(24, GPIO.LOW)  #turn off the LED
-            elif '23' in msg.data:
-                GPIO.output(23, GPIO.LOW)  #turn off the LED
-            elif '22' in msg.data:
-                GPIO.output(22, GPIO.LOW)  #turn off the LED
-
-
 
 
 def main(args=None):
@@ -62,7 +45,6 @@ def main(args=None):
     # when the garbage collector destroys the node object)
     minimal_subscriber.destroy_node()
     rclpy.shutdown()
-    GPIO.cleanup()                  #clean up all the ports used
 
 
 if __name__ == '__main__':
