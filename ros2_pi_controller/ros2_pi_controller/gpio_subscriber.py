@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import rclpy
+import time
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
